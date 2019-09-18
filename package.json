@@ -1,7 +1,8 @@
 {
-  "name": "react-hooks",
+  "name": "crypto-phishing-warning",
   "version": "1.0.0",
-  "description": "Simplest React Hooks Boilerplate",
+  "private": true,
+  "description": "Warning page for domain names that could have been used for crypto-phishing scams",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot",
@@ -9,26 +10,27 @@
     "lint": "eslint ./src"
   },
   "dependencies": {
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-hot-loader": "^4.6.5"
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-hot-loader": "4.12.13"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.5",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.3.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
     "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
   },
   "babel": {
     "presets": [
@@ -36,10 +38,11 @@
       "@babel/preset-react"
     ],
     "plugins": [
-      "react-hot-loader/babel"
+      "react-hot-loader/babel",
+      "@babel/plugin-transform-runtime"
     ]
   },
   "keywords": [],
-  "author": "Ninh Pham",
+  "author": "Oren Zomer",
   "license": "MIT"
 }

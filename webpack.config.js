@@ -11,12 +11,26 @@ const options = {
   },
   module: {
     rules: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.jsx?$/,
+        include: /node_modules/,
+        use: ['react-hot-loader/webpack'],
+      }
     ]
   },
   plugins: [
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV) }),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      hash: true,
+      title: 'Crypto-Phishing Warning',
+      template: './src/index.html',
+      filename: './index.html' //relative to root of the application
+    })
   ],
   devServer: {
     hot: true
