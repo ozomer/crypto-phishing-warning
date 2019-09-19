@@ -107,8 +107,8 @@ function Instructions({ app }) {
           Instead of printing/writing-down lots of private addresses,
           consider using the BIP39 Mnemonic Code standard.
           This standard would let you write down one secret BIP39 Mnemonic phrase (list of words),
-          and generate as many wallets that you could want
-          (you only need to print or take a photo the public addresses).
+          and generate as many wallets as you want
+          (you only need to print or take a photo of the public addresses).
           Modern wallet apps (mycelium, electrum), would know to load the Mnemonic phrase
           (with a secret passphrase that you <b>should</b> use),
           and access all the different wallets.
