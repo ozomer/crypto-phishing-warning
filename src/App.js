@@ -1,70 +1,77 @@
 import React, {
   useState,
-  useEffect as useEffectOriginal
 } from 'react';
 import { hot } from 'react-hot-loader/root';
-import './styles/appStyles.sass';
+import { useEffect } from './common';
+import './styles/app.sass';
 import Scream from './images/scream.jpg';
-
-function useEffect(callback, ...args) {
-  return useEffectOriginal((...subArgs) => {
-    callback(subArgs); // ignores result
-  }, ...args);
-} 
-
-const stubHook = () => {
-  const [hookResult, setHookResult] = useState();
-  useEffect(async () => {
-    try {
-      const result = await fetch('https://api.github.com/');
-      setHookResult(await result.json());
-    } catch (err) {
-      setHookResult({
-        error: `${err}`,
-      });
-    }
-  }, ['stubHook']);
-
-  return hookResult;
-};
-
-function Instructions() {
-  return (
-    <div className="instructions">
-      <h2>Subtitle <a href="https://www.google.com">Link</a></h2>
-      <p>Text</p>
-      <ol>
-        <li>
-          Element 1 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
-          Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
-          Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
-        </li>
-        <li>Element 2</li>
-      </ol>
-    </div>
-  );
-}
+import Footer from './Footer';
+import Instructions from './Instructions';
 
 function App() {
-  const result = stubHook();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
+  const [app, setApp] = useState();
 
-  if (!result) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    // // The Firebase SDK is initialized and available here!
+    //
+    // firebase.auth().onAuthStateChanged(user => { });
+    // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+    // firebase.messaging().requestPermission().then(() => { });
+    // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+    //
+    // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+    const start = Date.now();
+    const interval = setInterval(() => {
+      if (document.readyState !== 'complete'
+      && document.readyState !== 'loaded'
+      && document.readyState !== 'interactive') {
+        return;
+      }
+      if (typeof firebase === 'undefined') {
+        if (Date.now() - start < 8e3) {
+          return;
+        }
+        clearInterval(interval);
+        setError(new Error('Timeout for loading firebase'));
+        setLoading(false);
+        return;
+      }
+      clearInterval(interval);
+      try {
+        setApp(firebase.app());
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(`Failed to load firebase: ${e.stack || e}`);
+        setError(e);
+      }
+      setLoading(false);
+    }, 100);
+  }, []);
 
   return (
     <div className="container">
       <div className="compcontainer">
-        <img src={Scream} />
+        <img src={Scream} alt="Danger!" />
       </div>
       <h1 className="header">
         This Page Could Have Been A Phishing Scam!
       </h1>
-      <Instructions />
-      <footer>
-        Page Views:
-        <i> Loading...</i>
-      </footer>
+      { loading && (
+        <div>Loading...</div>
+      )}
+      { (!loading && error) && (
+        <div>Failed to load page...</div>
+      )}
+      { (!loading && !error && app) && (
+        [
+          <Instructions app={app} />,
+          <Footer app={app} />,
+        ]
+      )}
     </div>
   );
 }
