@@ -20,8 +20,6 @@ html
 body
 	background: $background
 	font-family: $font
-ol, ul
-	list-style-position: inside
 footer
 	padding: 1em
 	right: 0
@@ -47,6 +45,15 @@ footer
 		+smallscreen
 			text-shadow: 1px 1px 3px darken($red, 25%)
 			font-size: 2em
+.red
+	color: darken($red, 15%)
+.after
+	margin-left: 0.2em
+.topspace
+	margin-top: 0.5em
+.center
+	text-align: center
+	align-items: center
 .compcontainer
 	text-align: center
 	width: 75%
@@ -64,15 +71,27 @@ footer
 	+borders(1px, #DCDCDC)
 	border-radius: 0.25rem
 	h2
-		font-size: 1.25em
+		font-size: 1.3em
+		line-height: 1.3
+	h3
+		font-size: 1.15em
 		line-height: 1.3
 		color: darken($red, 15%)
-	p, ol, ul
+	p
 		font-size: 1.15em
 		line-height: 1.5
 		color: $textc
 		+smallscreen
 			font-size: 1em
+	ol, ul
+		list-style-position: outside
+		margin-left: 1em
+		font-size: 1.15em
+		line-height: 1.5
+		color: $textc
+		+smallscreen
+			font-size: 1em
+			margin-left: 1.5em
 	.step
 		display: flex
 		flex-direction: row

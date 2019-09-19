@@ -27,8 +27,7 @@ function App() {
     const start = Date.now();
     const interval = setInterval(() => {
       if (document.readyState !== 'complete'
-      && document.readyState !== 'loaded'
-      && document.readyState !== 'interactive') {
+      && document.readyState !== 'loaded') {
         return;
       }
       if (typeof firebase === 'undefined') {
@@ -49,6 +48,21 @@ function App() {
         setError(e);
       }
       setLoading(false);
+      (async () => {
+        try {
+          const response = await fetch('/increasePageViews', {
+            method: 'POST',
+          });
+          const { ok } = (await response.json()) || {};
+          if (!ok) {
+            // eslint-disable-next-line no-console
+            console.error('Failed to increase page-views: response not ok');
+          }
+        } catch (err) {
+          // eslint-disable-next-line no-console
+          console.error(`Failed to increase page-views: ${err.stack || err}`);
+        }
+      })();
     }, 100);
   }, []);
 
