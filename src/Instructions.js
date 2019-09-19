@@ -1,5 +1,5 @@
 import React, {
-  useState,
+  useState, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useEffect } from './common';
@@ -8,7 +8,7 @@ const dontTrustLinksHash = 'dont-trust-links';
 
 function Instructions({ app }) {
   const [globalInfo, setGlobalInfo] = useState();
-  const [dontTrustLinks, setDontTrustLinks] = useState(window.location.hash === `#${dontTrustLinksHash}`);
+  const [dontTrustLinks, setDontTrustLinks] = useState(false);
   useEffect(() => {
     const unsubscribe = app.firestore()
     .collection('globals')
@@ -19,10 +19,8 @@ function Instructions({ app }) {
     return unsubscribe;
   }, [app]);
 
-  useEffect(() => {
-    const updateDontTrustLinks = () => setDontTrustLinks(window.location.hash === `#${dontTrustLinksHash}`);
-    window.addEventListener('hashchange', updateDontTrustLinks, false);
-    return () => window.removeEventListener('hashchange', updateDontTrustLinks, false);
+  const dontTrustLinksCallback = useCallback(() => {
+    setDontTrustLinks(true);
   }, []);
 
   const redditPostUrl = 'https://www.reddit.com/r/Bitcoin/comments/czriz8/biladdressorg_phishing_scam_website';
@@ -80,7 +78,7 @@ function Instructions({ app }) {
           These addersses may also contain non-english unicode characters that look like english
           characters
           (a.k.a <a href={idnLinkUrl}>IDN homograph attack</a>).
-          Just type the website address yourself, or save it in the bookmarks/favorites.
+          Just type the website address yourself, or save it in your bookmarks/favorites.
           </span>
         </li>
         <li>
@@ -131,12 +129,12 @@ function Instructions({ app }) {
           use a long BIP38 passphrase to encrypt them.
           Consider the fact that modern printers save cache-files of their
           recent printing history,
-          connect to the internet, and in many workplaces they are monitored by the IT team.
+          connect to the internet, and in many workplaces the printers are monitored by the IT team.
           </span>
         </li>
         <li>
           <b>Watch out from QR-Code Scanner apps.</b>
-          <span>
+          <span className="after">
           Many of them would immediately try to steal your coins if you scan a QR-Code
           of a private address.
           </span>
@@ -163,10 +161,10 @@ function Instructions({ app }) {
         .filter(({ mistake }) => (mistake === `${window.location.hostname}`.replace(/^www\.$/, '')))
         .map(({ real }) => (
           <h2 className="center">
-            <a href={`#${dontTrustLinksHash}`}>
+            <a href={`#${dontTrustLinksHash}`} onClick={dontTrustLinksCallback}>
               {
                 dontTrustLinks ? (
-                  <span>
+                  <span className="red">
                     Don&apos;t Trust Links!
                   </span>
                 ) : (
