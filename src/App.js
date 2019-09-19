@@ -28,6 +28,23 @@ const stubHook = () => {
   return hookResult;
 };
 
+function Instructions() {
+  return (
+    <div className="instructions">
+      <h2>Subtitle <a href="https://www.google.com">Link</a></h2>
+      <p>Text</p>
+      <ol>
+        <li>
+          Element 1 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
+          Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
+          Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
+        </li>
+        <li>Element 2</li>
+      </ol>
+    </div>
+  );
+}
+
 function App() {
   const result = stubHook();
 
@@ -43,18 +60,11 @@ function App() {
       <h1 className="header">
         This Page Could Have Been A Phishing Scam!
       </h1>
-      <div className="instructions">
-        <h2>Subtitle</h2>
-        <p>Text</p>
-        <ol>
-          <li>
-            Element 1 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
-            Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
-            Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
-          </li>
-          <li>Element 2</li>
-        </ol>
-      </div>
+      <Instructions />
+      <footer>
+        Page Views:
+        <i> Loading...</i>
+      </footer>
     </div>
   );
 }
