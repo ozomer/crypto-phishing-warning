@@ -119,7 +119,7 @@ function Instructions({ app }) {
           and if the Account Extended Public Key is leaked,
           your privacy may be harmed because others
           could know about all the wallets that you own
-          - but at least you won&apos;t loose any money.
+          - but at least you won&apos;t loose any funds.
           </span>
         </li>
         <li>
