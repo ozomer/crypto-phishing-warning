@@ -142,7 +142,7 @@ function Instructions({ app }) {
       </ol>
       <p className="topspace">
         Here are the domains that I&apos;ve purchased so far,
-        to prevent people like you from loosing their coins to scammers:
+        to prevent people from loosing their coins to scammers:
       </p>
       {
         globalInfo ? (
