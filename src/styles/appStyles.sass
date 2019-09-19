@@ -1,0 +1,96 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,700)
+//Variables
+$background: #fff1f1
+$red: #fb3958
+$font: 'Nunito', sans-serif
+$textc: #122125
+//Mixins
+=borders($s, $c)
+	border: $s solid $c
+=smallscreen
+	@media (max-width:980px)
+		@content
+//Layout
+*
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+html
+	height: 100%
+body
+	background: $background
+	font-family: $font
+ol, ul
+	list-style-position: inside
+//Main Styles
+.container
+	max-width: 800px
+	+smallscreen
+		max-width: 100%
+	margin: 0.5rem auto
+	display: flex
+	flex-direction: column
+	align-items: center
+	.header
+		color: $red
+		font-size: 4em
+		font-weight: 700
+		text-align: center
+		text-shadow: 2px 2px 5px darken($red, 25%)
+		+smallscreen
+			font-size: 3em
+.compcontainer
+	text-align: center
+	width: 75%
+	height: 16rem
+	padding: 2rem 0
+	+smallscreen
+		height: 20rem
+	img
+		max-width: 100%
+		max-height: 100%
+		animation: bouncy 1300ms linear infinite
+.instructions
+	background: #FEFEFE
+	width: 90%
+	height: auto
+	padding: 1rem
+	+borders(1px, #DCDCDC)
+	border-radius: 0.25rem
+	+smallscreen
+		width: 90%
+	h2
+		font-size: 1.25em
+		line-height: 1.3
+		color: darken($red, 15%)
+		+smallscreen
+			font-size: 1.05em
+	p, ol, ul
+		font-size: 1.15em
+		line-height: 1.5
+		color: $textc
+		+smallscreen
+			font-size: 1em
+	.step
+		display: flex
+		flex-direction: row
+		width: 100%
+		height: 1.5rem
+		margin: 0.5rem 0
+		p
+			display: inline-block
+			width: 80%
+			line-height: 1.5
+			padding-left: 0.5rem
+	
+@keyframes bouncy
+	0%
+		transform: translateY(10px) translateX(0) rotate(0)
+	25%
+		transform: translateX(-10px) rotate(-10deg)
+	50%
+		transform: translateX(0) rotate(0deg)
+	75%
+		transform: translateX(10px) rotate(10deg)
+	100%
+		transform: translateY(10px) translateX(0) rotate(0)

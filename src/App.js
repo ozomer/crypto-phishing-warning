@@ -3,6 +3,8 @@ import React, {
   useEffect as useEffectOriginal
 } from 'react';
 import { hot } from 'react-hot-loader/root';
+import './styles/appStyles.sass';
+import Scream from './images/scream.jpg';
 
 function useEffect(callback, ...args) {
   return useEffectOriginal((...subArgs) => {
@@ -34,9 +36,25 @@ function App() {
   }
 
   return (
-    <div>
-      <p>Result:</p>
-      <pre>{JSON.stringify(result, null, 2)}</pre>
+    <div className="container">
+      <div className="compcontainer">
+        <img src={Scream} />
+      </div>
+      <h1 className="header">
+        This Page Could Have Been A Phishing Scam!
+      </h1>
+      <div className="instructions">
+        <h2>Subtitle</h2>
+        <p>Text</p>
+        <ol>
+          <li>
+            Element 1 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
+            Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
+            Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
+          </li>
+          <li>Element 2</li>
+        </ol>
+      </div>
     </div>
   );
 }
