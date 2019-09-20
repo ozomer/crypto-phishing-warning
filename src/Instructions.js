@@ -30,8 +30,7 @@ function Instructions({ globalInfo }) {
             You probably had a spelling mistake when typing the website address.
           </span>
         )}
-        &nbsp;
-        Your typos could be used by scammers, and lead you to a spoof website that generates
+        &nbsp;Your typos could be used by scammers, and lead you to a spoof website that generates
         fake paper-wallets.
         This is a not only a theoretical threat, as shown
         in <a href={redditPostUrl}>this reddit post</a>.
@@ -50,8 +49,7 @@ function Instructions({ globalInfo }) {
         </li>
         <li>
           <b>Never run the wallet generator online.</b>
-          &nbsp;
-          All wallet generators should provide a link to download it
+          &nbsp;All wallet generators should provide a link to download it
           locally so you could run it offline.
           Check where the file is downloaded from (right click, &quot;Copy Link Address&quot;).
           Open-Source projects will usually redirect you to download the file from <a href="https://github.com">github.com</a>.
@@ -63,17 +61,15 @@ function Instructions({ globalInfo }) {
         </li>
         <li>
           <b>Make sure you are browsing in secure websites only.</b>
-          &nbsp;
-          If you copy-paste the website address to a text editor,
+          &nbsp;If you copy-paste the website address to a text editor,
           it should begin with &quot;https://&quot; not &quot;http://&quot;.
           In most browsers you should see a lock-icon before the website address.
           Click that icon if you are not sure.
         </li>
         <li id={dontTrustLinksHash} className={dontTrustLinks ? 'red' : ''}>
           <b>Do not trust links from other websites.</b>
-          &nbsp;
-          Links may deliberately redirect you to a spoof website with an address that looks very
-          similar to the one you wanted.
+          &nbsp;Links may deliberately redirect you to a spoof website with an address
+          that looks very similar to the one you wanted.
           These addersses may also contain non-english unicode characters that look like english
           characters
           (a.k.a <a href={idnLinkUrl}>IDN homograph attack</a>).
@@ -92,14 +88,12 @@ function Instructions({ globalInfo }) {
         </li>
         <li>
           <b>When you spend from an address, spend the entire balance.</b>
-          &nbsp;
-          Move the funds left to a new wallet that belongs to you.
+          &nbsp;Move the funds left to a new wallet that belongs to you.
           Once you used the private address in an online website, it could be leaked in logs, etc.
         </li>
         <li>
           <b>Are you buying bitcoin/altcoin on a weekly/monthly basis?</b>
-          &nbsp;
-          For privacy and safety, you should use multiple paper-wallets,
+          &nbsp;For privacy and safety, you should use multiple paper-wallets,
           and not load all the coins to a single address.
           Instead of printing/writing-down lots of private addresses,
           consider using the BIP39 Mnemonic Code standard.
@@ -120,17 +114,15 @@ function Instructions({ globalInfo }) {
         </li>
         <li>
           <b>Printers are unsafe.</b>
-          &nbsp;
-          If you insist on generating paper wallets the old way and print the private addresses,
-          use a long BIP38 passphrase to encrypt them.
+          &nbsp;If you insist on generating paper wallets the old way and print
+          the private addresses, use a long BIP38 passphrase to encrypt them.
           Consider the fact that modern printers save cache-files of their
           recent printing history,
           connect to the internet, and in many workplaces the printers are monitored by the IT team.
         </li>
         <li>
           <b>Watch out from QR-Code Scanner apps.</b>
-          &nbsp;
-          Many of them would immediately try to steal your coins if you scan a QR-Code
+          &nbsp;Many of them would immediately try to steal your coins if you scan a QR-Code
           of a private address.
         </li>
       </ol>
