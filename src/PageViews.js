@@ -26,9 +26,9 @@ function PageViews({ app }) {
     <div className="page-views">
       Page Views for <b className="nowrap">{hostname}</b>
       <br />
-      <span>
+      <h2>
         { loading ? (<i>Loading...</i>) : pageViews }
-      </span>
+      </h2>
     </div>
   );
 }
