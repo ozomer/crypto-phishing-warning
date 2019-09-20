@@ -22,8 +22,8 @@ function Footer({ app }) {
 
   return (
     <footer>
-      Page Views for <b>{hostname}</b>:
-      <span className="after">
+      Page Views for <b>{hostname}</b>:&nbsp;
+      <span>
         { loading ? (<i>Loading...</i>) : pageViews }
       </span>
     </footer>

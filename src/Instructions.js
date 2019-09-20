@@ -2,22 +2,11 @@ import React, {
   useState, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useEffect } from './common';
 
 const dontTrustLinksHash = 'dont-trust-links';
 
-function Instructions({ app }) {
-  const [globalInfo, setGlobalInfo] = useState();
+function Instructions({ globalInfo }) {
   const [dontTrustLinks, setDontTrustLinks] = useState(false);
-  useEffect(() => {
-    const unsubscribe = app.firestore()
-    .collection('globals')
-    .doc('global-info')
-    .onSnapshot((doc) => {
-      setGlobalInfo(doc.data());
-    });
-    return unsubscribe;
-  }, [app]);
 
   const dontTrustLinksCallback = useCallback(() => {
     setDontTrustLinks(true);
@@ -26,12 +15,24 @@ function Instructions({ app }) {
   const redditPostUrl = 'https://www.reddit.com/r/Bitcoin/comments/czriz8/biladdressorg_phishing_scam_website';
   const idnLinkUrl = 'https://en.wikipedia.org/wiki/IDN_homograph_attack';
 
+  const [domain] = (globalInfo.domains || [])
+  .filter(({ mistake }) => (mistake === `${window.location.hostname}`.replace(/^www\.$/, '')));
+
   return (
     <div className="instructions">
       <h3>
-        You probably had a spelling mistake when typing the website address.
-        This could be used for stealing bitcoins/altcoins from you,
-        for example by generating fake paper-wallets.
+        { domain ? (
+          <span>
+            Did you mean <b>{domain.real}</b>?
+          </span>
+        ) : (
+          <span>
+            You probably had a spelling mistake when typing the website address.
+          </span>
+        )}
+        &nbsp;
+        Your typos could be used by scammers, and lead you to a spoof website that generates
+        fake paper-wallets.
         This is a not only a theoretical threat, as shown
         in <a href={redditPostUrl}>this reddit post</a>.
       </h3>
@@ -49,7 +50,7 @@ function Instructions({ app }) {
         </li>
         <li>
           <b>Never run the wallet generator online.</b>
-          <span className="after">
+          &nbsp;
           All wallet generators should provide a link to download it
           locally so you could run it offline.
           Check where the file is downloaded from (right click, &quot;Copy Link Address&quot;).
@@ -59,27 +60,24 @@ function Instructions({ app }) {
           (new GitHub projects may also be unsafe,
           but if someone reports them they will be removed).
           When you finish, Shut down the live operating system without reconnecting to the internet.
-          </span>
         </li>
         <li>
           <b>Make sure you are browsing in secure websites only.</b>
-          <span className="after">
+          &nbsp;
           If you copy-paste the website address to a text editor,
           it should begin with &quot;https://&quot; not &quot;http://&quot;.
           In most browsers you should see a lock-icon before the website address.
           Click that icon if you are not sure.
-          </span>
         </li>
         <li id={dontTrustLinksHash} className={dontTrustLinks ? 'red' : ''}>
           <b>Do not trust links from other websites.</b>
-          <span className="after">
+          &nbsp;
           Links may deliberately redirect you to a spoof website with an address that looks very
           similar to the one you wanted.
           These addersses may also contain non-english unicode characters that look like english
           characters
           (a.k.a <a href={idnLinkUrl}>IDN homograph attack</a>).
           Just type the website address yourself, or save it in your bookmarks/favorites.
-          </span>
         </li>
         <li>
           <b>Download paper-wallet generators from two or more sources</b>, for
@@ -94,14 +92,13 @@ function Instructions({ app }) {
         </li>
         <li>
           <b>When you spend from an address, spend the entire balance.</b>
-          <span className="after">
+          &nbsp;
           Move the funds left to a new wallet that belongs to you.
           Once you used the private address in an online website, it could be leaked in logs, etc.
-          </span>
         </li>
         <li>
           <b>Are you buying bitcoin/altcoin on a weekly/monthly basis?</b>
-          <span className="after">
+          &nbsp;
           For privacy and safety, you should use multiple paper-wallets,
           and not load all the coins to a single address.
           Instead of printing/writing-down lots of private addresses,
@@ -120,46 +117,34 @@ function Instructions({ app }) {
           your privacy may be harmed because others
           could know about all the wallets that you own
           - but at least you won&apos;t loose any funds.
-          </span>
         </li>
         <li>
           <b>Printers are unsafe.</b>
-          <span className="after">
+          &nbsp;
           If you insist on generating paper wallets the old way and print the private addresses,
           use a long BIP38 passphrase to encrypt them.
           Consider the fact that modern printers save cache-files of their
           recent printing history,
           connect to the internet, and in many workplaces the printers are monitored by the IT team.
-          </span>
         </li>
         <li>
           <b>Watch out from QR-Code Scanner apps.</b>
-          <span className="after">
+          &nbsp;
           Many of them would immediately try to steal your coins if you scan a QR-Code
           of a private address.
-          </span>
         </li>
       </ol>
       <p className="topspace">
         Here are the domains that I&apos;ve purchased so far,
         to prevent novice Bitcoin users from loosing their coins to scammers:
       </p>
+      <ul>
+        {
+          (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
+        }
+      </ul>
       {
-        globalInfo ? (
-          <ul>
-            {
-              (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
-            }
-          </ul>
-        ) : (
-          <p><i>Loading...</i></p>
-        )
-      }
-      {
-        globalInfo
-        && (globalInfo.domains || [])
-        .filter(({ mistake }) => (mistake === `${window.location.hostname}`.replace(/^www\.$/, '')))
-        .map(({ real }) => (
+        domain && (
           <h2 className="center">
             <a href={`#${dontTrustLinksHash}`} onClick={dontTrustLinksCallback}>
               {
@@ -169,21 +154,20 @@ function Instructions({ app }) {
                   </span>
                 ) : (
                   <span>
-                    Take me to <b>{real}</b>
+                    Take me to <b>{domain.real}</b>
                   </span>
                 )
               }
             </a>
           </h2>
-        ))
-        .slice(0, 1)
+        )
       }
     </div>
   );
 }
 
 Instructions.propTypes = {
-  app: PropTypes.node.isRequired,
+  globalInfo: PropTypes.node.isRequired,
 };
 
 export default Instructions;

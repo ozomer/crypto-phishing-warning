@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const [app, setApp] = useState();
+  const [globalInfo, setGlobalInfo] = useState();
 
   useEffect(() => {
     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
@@ -46,8 +47,10 @@ function App() {
         // eslint-disable-next-line no-console
         console.error(`Failed to load firebase: ${e.stack || e}`);
         setError(e);
+        setLoading(false);
+        return;
       }
-      setLoading(false);
+      // asyncly:
       (async () => {
         try {
           const response = await fetch('/increasePageViews', {
@@ -66,6 +69,20 @@ function App() {
     }, 100);
   }, []);
 
+  useEffect(() => {
+    if (!app) {
+      return null;
+    }
+    const unsubscribe = app.firestore()
+    .collection('globals')
+    .doc('global-info')
+    .onSnapshot((doc) => {
+      setGlobalInfo(doc.data());
+      setLoading(false);
+    });
+    return unsubscribe;
+  }, [app]);
+
   return (
     <div className="container">
       <div className="compcontainer">
@@ -77,14 +94,14 @@ function App() {
       { loading && (
         <div>Loading...</div>
       )}
-      { (!loading && error) && (
+      { error && (
         <div>Failed to load page...</div>
       )}
-      { (!loading && !error && app) && (
-        [
-          <Instructions app={app} />,
-          <Footer app={app} />,
-        ]
+      { globalInfo && (
+        <Instructions globalInfo={globalInfo} />
+      )}
+      { app && (
+        <Footer app={app} />
       )}
     </div>
   );
