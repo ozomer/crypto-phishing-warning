@@ -2,10 +2,10 @@ import React from 'react';
 import QRCode from 'qrcode.react';
 import PropTypes from 'prop-types';
 
-function PageViews({ globalInfo }) {
+function Donation({ globalInfo }) {
   return (
     <div>
-      <h2 className="subheader">Donate!</h2>
+      <h2 className="subheader">Donate</h2>
       { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
       <label className="btc donate-crypto-box">
         <div className="coin">
@@ -64,7 +64,7 @@ function PageViews({ globalInfo }) {
           type="text"
           value={globalInfo.donation.litecoin}
         />
-        <div className="qr-code">
+        <div className="coin-qr">
           <QRCode value={`litecoin:${globalInfo.donation.litecoin}?message=Donation`} size="40" />
         </div>
       </label>
@@ -72,8 +72,8 @@ function PageViews({ globalInfo }) {
   );
 }
 
-PageViews.propTypes = {
+Donation.propTypes = {
   globalInfo: PropTypes.node.isRequired,
 };
 
-export default PageViews;
+export default Donation;

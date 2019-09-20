@@ -15,7 +15,7 @@ $border_color_3: #b5b5b5;
 	-ms-user-select: none;
 	user-select: none;
   cursor: text;
-	max-width: 29em;
+	width: 29em;
 }
 .coin {
 	display: inline-block;
@@ -59,7 +59,6 @@ $border_color_3: #b5b5b5;
 	}
 }
 .btc {
-	margin-top: -15px;
 	.coin-face {
 		background: shade(#ff9900, 35%);
 		&:nth-child(1) {

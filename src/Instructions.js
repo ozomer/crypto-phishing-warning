@@ -142,7 +142,7 @@ function Instructions({ globalInfo }) {
           </h2>
         )
       }
-      <p className="topspace">
+      <p>
         Please donate and help me buy domain-names that could be used by scammers.
         Here are the domain-names that I&apos;ve purchased so far:
       </p>
