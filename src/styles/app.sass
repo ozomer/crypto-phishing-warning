@@ -20,7 +20,7 @@ html
 body
 	background: $background
 	font-family: $font
-footer
+page-views
 	padding: 1em
 	right: 0
 	bottom: 0
@@ -45,6 +45,13 @@ footer
 		+smallscreen
 			text-shadow: 1px 1px 3px darken($red, 25%)
 			font-size: 2em
+	.subheader
+		margin: 0 0.5rem
+		color: $red
+		font-weight: 700
+		text-align: center
+		text-shadow: 1px 1px 3px darken($red, 25%)
+		font-size: 2em
 .red
 	color: darken($red, 15%)
 .topspace
@@ -62,7 +69,7 @@ footer
 		max-height: 100%
 		animation: bouncy 1300ms linear infinite
 .disqus-container
-	margin: 0 1rem
+	margin: 0 auto
 	max-width: 800px
 .instructions
 	background: #FEFEFE

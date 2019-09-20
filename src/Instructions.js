@@ -101,19 +101,21 @@ function Instructions({ globalInfo }) {
           <b>Are you buying bitcoin/altcoin on a weekly/monthly basis?</b>
           &nbsp;For privacy and safety, you should use multiple paper-wallets,
           and not load all the coins to a single address.
-          Instead of printing/writing-down lots of private addresses,
+          Instead of printing/writing-down lots of private keys,
           consider using the BIP39 Mnemonic Code standard.
           This standard would let you write down one secret BIP39 Mnemonic phrase (list of words),
-          and generate as many wallets as you want
-          (you only need to print or take a photo of the public addresses).
+          and generate as many wallets as you want - you only need to print or take a photo of the
+          public addresses, not the private keys. The standard also allows you to re-generate all
+          previous/new public addresses from an &quot;Account Extended Public Key&quot; without exposing
+          the Mnemonic Code or any information that could lead to the private keys.
         </li>
         <li>
           <b>Printers are unsafe.</b>
           &nbsp;If you insist on generating paper wallets the old way and print
-          the private addresses, use a long BIP38 passphrase to encrypt them.
+          the private keys, use a long BIP38 passphrase to encrypt them.
           Consider the fact that modern printers save cache-files of their
-          recent printing history,
-          connect to the internet, and in many workplaces the printers are monitored by the IT team.
+          recent printing history, connect to the internet, and in many workplaces
+          the printers could be monitored by the IT team.
         </li>
         <li>
           <b>Watch out from QR-Code Scanner/Generator apps.</b>
@@ -121,15 +123,6 @@ function Instructions({ globalInfo }) {
           private key.
         </li>
       </ol>
-      <p className="topspace">
-        Here are the domains that I&apos;ve purchased so far,
-        to prevent novice Bitcoin users from loosing their coins to scammers:
-      </p>
-      <ul>
-        {
-          (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
-        }
-      </ul>
       {
         domain && (
           <h2 className="center">
@@ -149,6 +142,15 @@ function Instructions({ globalInfo }) {
           </h2>
         )
       }
+      <p className="topspace">
+        Please donate and help me buy domain-names that could be used by scammers.
+        Here are the domain-names that I&apos;ve purchased so far:
+      </p>
+      <ul>
+        {
+          (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
+        }
+      </ul>
     </div>
   );
 }

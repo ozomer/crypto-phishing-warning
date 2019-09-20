@@ -4,8 +4,10 @@ import React, {
 import { hot } from 'react-hot-loader/root';
 import { useEffect } from './common';
 import './styles/app.sass';
+import './styles/crypto.scss';
 import Scream from './images/scream.jpg';
-import Footer from './Footer';
+import PageViews from './PageViews';
+import Donation from './Donation';
 import Instructions from './Instructions';
 
 function App() {
@@ -100,8 +102,11 @@ function App() {
       { globalInfo && (
         <Instructions globalInfo={globalInfo} />
       )}
+      { globalInfo && (
+        <Donation globalInfo={globalInfo} />
+      )}
       { app && (
-        <Footer app={app} />
+        <PageViews app={app} />
       )}
     </div>
   );

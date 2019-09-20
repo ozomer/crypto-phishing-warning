@@ -1,0 +1,100 @@
+$color_1: #000000;
+$background_color_1: #ffffff;
+$border_color_1: rgba(200, 0, 0, 0.1);
+$border_color_2: #ff9900;
+$border_color_3: #b5b5b5;
+
+.donate-crypto-box {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 0.5em;
+	box-sizing: border-box;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  cursor: text;
+	max-width: 29em;
+}
+.coin {
+	display: inline-block;
+	position: relative;
+	min-width: 3em;
+	min-height: 3em;
+	vertical-align: middle;
+}
+.coin-qr {
+  vertical-align: middle;
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+.coin-face {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 50%;
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+.coin-address {
+  max-width: 23em;
+	flex: 1;
+	font: .8em/2.5 Monaco, monospace;
+	text-align: center;
+  margin-left: 1em;
+  margin-right: 1em;
+	border-width: 0 0 2px;
+	border-color: $border_color_1;
+	cursor: text;
+	background-color: $background_color_1;
+	color: $color_1;
+	&:hover {
+		transition-duration: .1s;
+	}
+}
+.btc {
+	margin-top: -15px;
+	.coin-face {
+		background: shade(#ff9900, 35%);
+		&:nth-child(1) {
+			background: #ff9900;
+		}
+		&:nth-child(5) {
+			background: #ff9900;
+		}
+	}
+	.coin-address {
+		&:hover {
+			border-color: $border_color_2;
+		}
+		&:focus {
+			border-color: $border_color_2;
+		}
+	}
+}
+.ltc {
+	margin-bottom: 10px;
+	.coin-face {
+		background: shade(#b5b5b5, 35%);
+		&:nth-child(1) {
+			background: #b5b5b5;
+		}
+		&:nth-child(5) {
+			background: #b5b5b5;
+		}
+	}
+	.coin-address {
+		&:hover {
+			border-color: $border_color_3;
+		}
+		&:focus {
+			border-color: $border_color_3;
+		}
+	}
+}
