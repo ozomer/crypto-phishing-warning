@@ -23,7 +23,7 @@ function Instructions({ globalInfo }) {
       <h3>
         { domain ? (
           <span>
-            Did you mean <b>{domain.real}</b>?
+            Did you mean <span style={{ fontWeight: 800 }}>{domain.real}</span>?
           </span>
         ) : (
           <span>
