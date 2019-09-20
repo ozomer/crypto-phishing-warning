@@ -3,6 +3,8 @@ import QRCode from 'qrcode.react';
 import PropTypes from 'prop-types';
 
 function Donation({ globalInfo }) {
+  const bitcoinURI = `bitcoin:${globalInfo.donation.bitcoin}?message=Donation`;
+  const litecoinURI = `litecoin:${globalInfo.donation.litecoin}?message=Donation`;
   return (
     <div>
       <h2 className="subheader">Donate</h2>
@@ -33,9 +35,9 @@ function Donation({ globalInfo }) {
           type="text"
           value={globalInfo.donation.bitcoin}
         />
-        <div className="coin-qr">
-          <QRCode value={`bitcoin:${globalInfo.donation.bitcoin}?message=Donation`} size="40" />
-        </div>
+        <a className="coin-qr" href={bitcoinURI}>
+          <QRCode value={bitcoinURI} size="40" />
+        </a>
       </label>
       { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
       <label className="ltc donate-crypto-box">
@@ -64,9 +66,9 @@ function Donation({ globalInfo }) {
           type="text"
           value={globalInfo.donation.litecoin}
         />
-        <div className="coin-qr">
-          <QRCode value={`litecoin:${globalInfo.donation.litecoin}?message=Donation`} size="40" />
-        </div>
+        <a className="coin-qr" href={litecoinURI}>
+          <QRCode value={litecoinURI} size="40" />
+        </a>
       </label>
     </div>
   );
