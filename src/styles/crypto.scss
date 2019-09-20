@@ -7,7 +7,6 @@ $border_color_3: #b5b5b5;
 .donate-crypto-box {
 	display: flex;
 	align-items: center;
-	width: 100%;
 	padding: 0.5em;
 	box-sizing: border-box;
 	-webkit-user-select: none;
@@ -15,7 +14,6 @@ $border_color_3: #b5b5b5;
 	-ms-user-select: none;
 	user-select: none;
   cursor: text;
-	width: 29em;
 }
 .coin {
 	display: inline-block;
@@ -43,7 +41,7 @@ $border_color_3: #b5b5b5;
 	}
 }
 .coin-address {
-  max-width: 23em;
+  min-width: 23em;
 	flex: 1;
 	font: .8em/2.5 Monaco, monospace;
 	text-align: center;
