@@ -19,7 +19,9 @@ exports.increasePageViews = functions.https.onRequest(async (req, res) => {
     const hostname = `${req.hostname}`.replace(/^www\.$/, '').slice(0, 100);
     // We cannot use common.js here
     console.info(`handling hostname: ${hostname}`);
-    const key = (/^[a-zA-Z0-9][a-zA-Z0-9.\-_]*$/.test(hostname) ? hostname : `base64:${Buffer.from(hostname).toString('base64')}`);
+    const key = (/^[a-zA-Z0-9][a-zA-Z0-9.\-_]*$/.test(hostname)
+    ? hostname
+    : `base64:${Buffer.from(hostname).toString('base64')}`);
     console.info(`handling key: ${key}`);
     const docRef = admin.firestore().collection('page-views').doc(key);
     const { exists } = await docRef.get();
