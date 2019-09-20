@@ -33,7 +33,8 @@ function Instructions({ globalInfo }) {
         &nbsp;Your typos could be used by scammers, and lead you to a spoof website that generates
         fake paper-wallets.
         This is a not only a theoretical threat, as shown
-        in <a href={redditPostUrl}>this reddit post</a>.
+        in this <a href={redditPostUrl}>reddit post</a> about website addresses that are similar
+        to <b>bitaddress.org</b>.
       </h3>
       <p>
         Are you sure you want to generate a paper-wallet and not buy a hardware wallet?
@@ -52,7 +53,8 @@ function Instructions({ globalInfo }) {
           &nbsp;All wallet generators should provide a link to download it
           locally so you could run it offline.
           Check where the file is downloaded from (right click, &quot;Copy Link Address&quot;).
-          Open-Source projects will usually redirect you to download the file from <a href="https://github.com">github.com</a>.
+          Open-Source projects will usually redirect you to download the file
+          from <a href="https://github.com">github.com</a>.
           If the file is downloaded from the same website and not from GitHub,
           you should be suspicious
           (new GitHub projects may also be unsafe,
@@ -78,18 +80,22 @@ function Instructions({ globalInfo }) {
         <li>
           <b>Download paper-wallet generators from two or more sources</b>, for
           example <b>bitaddress.org</b> and <b>walletgenerator.net</b>.
-          Make sure that when you generate a pair of public &amp; private addresses
-          in one wallet generator, it can be verified in the other wallet generator.
-          A typical scam would be to pick one of the scammer&apos;s public addresses
+          Make sure that when you generate a sample pair of public bitcoin address &amp; private key
+          in one wallet generator, it can be verified in the other wallet generator (for your actual
+          deposit, ignore this address and generate a new one).
+          A typical scam would be to pick one of the scammer&apos;s public bitcoin addresses
           from a pre-defined list (i.e. to make it look random every time you generate a wallet)
-          and show you an unrelated private address.
+          and show you an unrelated private key.
           Once you to load bitcoins/altcoins to the scammer&apos;s wallet,
           you no longer have any control over them.
         </li>
         <li>
-          <b>When you spend from an address, spend the entire balance.</b>
-          &nbsp;Move the funds left to a new wallet that belongs to you.
-          Once you used the private address in an online website, it could be leaked in logs, etc.
+          <b>When you will finally decide to switch to a hardware/software wallet, sweep the entire balance.</b>
+          &nbsp;Transferring even a partial amount of bitcoin to another wallet, requires using your private
+          key to sign the transaction, and broadcast this information. This information does not contain the
+          private key directly but mathematically it makes it easier to break it.
+          Software/Hardware wallets solve this by generating a new address after every transaction,
+          and sending your leftover balance to that new address. Obviously this cannot be done with paper wallet.
         </li>
         <li>
           <b>Are you buying bitcoin/altcoin on a weekly/monthly basis?</b>
@@ -100,17 +106,6 @@ function Instructions({ globalInfo }) {
           This standard would let you write down one secret BIP39 Mnemonic phrase (list of words),
           and generate as many wallets as you want
           (you only need to print or take a photo of the public addresses).
-          Modern wallet apps (mycelium, electrum), would know to load the Mnemonic phrase
-          (with a secret passphrase that you <b>should</b> use),
-          and access all the different wallets.
-          The standard also gives you an Account Extended Public Key,
-          which can be used to generate more public addresses without exposing your private keys.
-          You will still need to use a safe device to do so
-          (a hacked device could generate fake addresses),
-          and if the Account Extended Public Key is leaked,
-          your privacy may be harmed because others
-          could know about all the wallets that you own
-          - but at least you won&apos;t loose any funds.
         </li>
         <li>
           <b>Printers are unsafe.</b>
@@ -121,9 +116,9 @@ function Instructions({ globalInfo }) {
           connect to the internet, and in many workplaces the printers are monitored by the IT team.
         </li>
         <li>
-          <b>Watch out from QR-Code Scanner apps.</b>
-          &nbsp;Many of them would immediately try to steal your coins if you scan a QR-Code
-          of a private address.
+          <b>Watch out from QR-Code Scanner/Generator apps.</b>
+          &nbsp;Many of them would immediately try to steal your coins if you scan/enter a
+          private key.
         </li>
       </ol>
       <p className="topspace">
