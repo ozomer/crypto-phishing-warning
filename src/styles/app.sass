@@ -20,6 +20,11 @@ html
 body
 	background: $background
 	font-family: $font
+ol, ul
+	list-style-position: outside
+	margin-left: 1em
+	+smallscreen
+		font-size: 1em
 .page-views
 	padding: 0.5em
 	text-align: center
@@ -101,14 +106,11 @@ body
 		+smallscreen
 			font-size: 1em
 	ol, ul
-		list-style-position: outside
-		margin-left: 1em
 		font-size: 1.15em
 		line-height: 1.5
 		color: $textc
 		+smallscreen
 			font-size: 1em
-			margin-left: 1.5em
 	
 @keyframes bouncy
 	0%
