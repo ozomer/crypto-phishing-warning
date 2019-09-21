@@ -10,14 +10,6 @@ function Donation({ globalInfo }) {
       <h2 className="header">
         Donate to help me buy more dangerous <span className="nowrap">domain-names</span> and prevent phishing scams
       </h2>
-      <p>
-        Domains bought so far:
-        <ul>
-          {
-            (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
-          }
-        </ul>
-      </p>
       <div className="center-column">
         { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
         <label className="btc donate-crypto-box">
@@ -82,6 +74,14 @@ function Donation({ globalInfo }) {
           </a>
         </label>
       </div>
+      <p>
+        Domains bought so far:
+        <ul>
+          {
+            (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
+          }
+        </ul>
+      </p>
     </div>
   );
 }
