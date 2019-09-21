@@ -73,15 +73,15 @@ function Donation({ globalInfo }) {
             <QRCode value={litecoinURI} size="40" />
           </a>
         </label>
-      </div>
-      <p>
-        Domains bought so far:
+        <p>
+          Domains bought so far:
+        </p>
         <ul>
           {
             (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
           }
         </ul>
-      </p>
+      </div>
     </div>
   );
 }
