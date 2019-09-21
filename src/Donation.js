@@ -11,7 +11,7 @@ function Donation({ globalInfo }) {
         Donate to help me buy more dangerous <span className="nowrap">domain-names</span> and prevent phishing scams
       </h2>
       <h3 className="header">
-        Here are the domain-names that I&apos;ve bought so far:
+        Domains bought so far:
         <ul>
           {
             (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
