@@ -6,18 +6,18 @@ function Donation({ globalInfo }) {
   const bitcoinURI = `bitcoin:${globalInfo.donation.bitcoin}?message=Donation`;
   const litecoinURI = `litecoin:${globalInfo.donation.litecoin}?message=Donation`;
   return (
-    <div>
+    <div className="donation">
       <h2 className="header">
         Donate to help me buy more dangerous <span className="nowrap">domain-names</span> and prevent phishing scams
       </h2>
-      <h3 className="header">
+      <p>
         Domains bought so far:
         <ul>
           {
             (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
           }
         </ul>
-      </h3>
+      </p>
       <div className="center-column">
         { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
         <label className="btc donate-crypto-box">
