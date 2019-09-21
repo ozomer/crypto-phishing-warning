@@ -12,7 +12,6 @@ function Instructions({ globalInfo }) {
     setDontTrustLinks(true);
   }, []);
 
-  const redditPostUrl = 'https://www.reddit.com/r/Bitcoin/comments/czriz8/biladdressorg_phishing_scam_website';
   const idnLinkUrl = 'https://en.wikipedia.org/wiki/IDN_homograph_attack';
 
   const [domain] = (globalInfo.domains || [])
@@ -21,20 +20,7 @@ function Instructions({ globalInfo }) {
   return (
     <div className="instructions">
       <h3>
-        { domain ? (
-          <span>
-            Did you mean <span style={{ fontWeight: 800 }}>{domain.real}</span>?
-          </span>
-        ) : (
-          <span>
-            You probably had a spelling mistake when typing the website address.
-          </span>
-        )}
-        &nbsp;Your typos could be used by scammers, and lead you to a spoof website that generates
-        fake paper-wallets.
-        This is a not only a theoretical threat, as shown
-        in this <a href={redditPostUrl}>reddit post</a> about website addresses that are similar
-        to <b>bitaddress.org</b>.
+        Using Paper-Wallets Safely
       </h3>
       <p>
         Are you sure you want to generate a paper-wallet and not buy a hardware wallet?
@@ -142,15 +128,6 @@ function Instructions({ globalInfo }) {
           </h2>
         )
       }
-      <p>
-        Please donate and help me buy domain-names that could be used by scammers.
-        Here are the domain-names that I&apos;ve purchased so far:
-      </p>
-      <ul>
-        {
-          (globalInfo.domains || []).map(({ mistake }) => (<li>{ mistake }</li>))
-        }
-      </ul>
     </div>
   );
 }

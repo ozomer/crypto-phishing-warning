@@ -27,14 +27,15 @@ body
 	line-height: 1.3
 .nowrap
 	white-space: nowrap
+.center-cloumn
+	display: flex
+	flex-direction: column
+	align-items: center
 //Main Styles
 .container
 	max-width: 800px
 	margin: 0.5rem auto
-	display: flex
-	flex-direction: column
-	align-items: center
-	.header
+	h1.header
 		margin: 0 0.5rem
 		color: $red
 		font-size: 4em
@@ -44,13 +45,18 @@ body
 		+smallscreen
 			text-shadow: 1px 1px 3px darken($red, 25%)
 			font-size: 2em
-	.subheader
+	h2.header
 		margin: 0.5rem
 		color: $red
 		font-weight: 700
 		text-align: center
 		text-shadow: 1px 1px 3px darken($red, 25%)
 		font-size: 2em
+	h3.header
+		margin: 0.5rem 2rem
+		font-weight: 700
+		text-align: left
+		font-size: 1.3em
 .red
 	color: darken($red, 15%)
 .center
@@ -87,7 +93,7 @@ body
 		font-weight: 600
 		font-size: 1.15em
 		line-height: 1.3
-		color: darken($red, 15%)
+		text-decoration: underline
 	p
 		font-size: 1.15em
 		line-height: 1.5
@@ -103,17 +109,6 @@ body
 		+smallscreen
 			font-size: 1em
 			margin-left: 1.5em
-	.step
-		display: flex
-		flex-direction: row
-		width: 100%
-		height: 1.5rem
-		margin: 0.5rem 0
-		p
-			display: inline-block
-			width: 80%
-			line-height: 1.5
-			padding-left: 0.5rem
 	
 @keyframes bouncy
 	0%

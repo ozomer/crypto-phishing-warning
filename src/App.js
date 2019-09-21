@@ -9,6 +9,7 @@ import Scream from './images/scream.jpg';
 import PageViews from './PageViews';
 import Donation from './Donation';
 import Instructions from './Instructions';
+import Header from './Header';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -86,7 +87,7 @@ function App() {
   }, [app]);
 
   return (
-    <div className="container">
+    <div className="container center-column">
       <div className="compcontainer">
         <img src={Scream} alt="Danger!" />
       </div>
@@ -100,10 +101,13 @@ function App() {
         <div>Failed to load page...</div>
       )}
       { globalInfo && (
-        <Instructions globalInfo={globalInfo} />
+        <Header globalInfo={globalInfo} />
       )}
       { globalInfo && (
         <Donation globalInfo={globalInfo} />
+      )}
+      { globalInfo && (
+        <Instructions globalInfo={globalInfo} />
       )}
       { app && (
         <PageViews app={app} />
