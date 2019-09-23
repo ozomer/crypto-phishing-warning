@@ -20,9 +20,9 @@ function Header({ globalInfo }) {
       )}
       &nbsp;Your typos could be used by scammers, and lead you to a spoof website that generates
       fake paper-wallets.
-      This is a not only a theoretical threat, as shown
-      in this <a href={redditPostUrl}>reddit post</a> about website addresses that are similar
-      to <span style={{ fontWeight: 800 }}>bitaddress.org</span>.
+      This is not just a theoretical threat, as shown
+      in this <a href={redditPostUrl}>reddit post</a> on website addresses that look
+      like <span style={{ fontWeight: 800 }}>bitaddress.org</span>.
     </h3>
   );
 }
