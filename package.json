@@ -1,6 +1,6 @@
 {
   "name": "crypto-phishing-warning",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Warning page for domain names that could have been used for crypto-phishing scams",
   "main": "index.js",
