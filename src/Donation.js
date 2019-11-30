@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 function Donation({ globalInfo }) {
   const bitcoinURI = `bitcoin:${globalInfo.donation.bitcoin}?message=Donation`;
-  const litecoinURI = `litecoin:${globalInfo.donation.litecoin}?message=Donation`;
   return (
     <div className="donation">
       <h2 className="header">
-        Donate to help me buy more dangerous <span className="nowrap">domain-names</span> and prevent phishing scams
+        Please donate to help me buy more dangerous <span className="nowrap">domain-names</span> and
+        prevent phishing scams
       </h2>
       <div className="center-column">
         { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
@@ -40,37 +40,6 @@ function Donation({ globalInfo }) {
           />
           <a className="coin-qr" href={bitcoinURI}>
             <QRCode value={bitcoinURI} size="40" />
-          </a>
-        </label>
-        { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
-        <label className="ltc donate-crypto-box">
-          <a className="coin" href={litecoinURI}>
-            <div className="coin-face">
-              <svg height="8" viewBox="0 0 38 38" width="8" xmlns="http://www.w3.org/2000/svg">
-                { /* eslint-disable-next-line max-len */ }
-                <path d="M12.29 28.04l1.29-5.52-1.58.67.63-2.85 1.64-.68L16.52 10h5.23l-1.52 7.14 2.09-.74-.58 2.7-2.05.8-.9 4.34h8.1l-.99 3.8z" fill="#fff" />
-              </svg>
-            </div>
-            <div className="coin-face" />
-            <div className="coin-face" />
-            <div className="coin-face" />
-            <div className="coin-face">
-              <svg height="8" viewBox="0 0 38 38" width="8" xmlns="http://www.w3.org/2000/svg">
-                { /* eslint-disable-next-line max-len */ }
-                <path d="M12.29 28.04l1.29-5.52-1.58.67.63-2.85 1.64-.68L16.52 10h5.23l-1.52 7.14 2.09-.74-.58 2.7-2.05.8-.9 4.34h8.1l-.99 3.8z" fill="#fff" />
-              </svg>
-            </div>
-          </a>
-          <input
-            className="coin-address"
-            onClick={event => event.target.select()}
-            readOnly="readonly"
-            spellCheck="false"
-            type="text"
-            value={globalInfo.donation.litecoin}
-          />
-          <a className="coin-qr" href={litecoinURI}>
-            <QRCode value={litecoinURI} size="40" />
           </a>
         </label>
         <p>
